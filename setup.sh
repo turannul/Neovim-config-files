@@ -19,18 +19,19 @@ function cleanup() {
 	echo "Removed $nvim_dir"
 }
 
-function clone() {
-	git clone https://github.com/turannul/Neovim-config-files.git "$nvim_dir"
-	echo "Cloned Neovim config to $nvim_dir"
+function setup() {
+	mkdir -p "$nvim_dir"
+	cp -Rv lua/ init.lua "$nvim_dir"
+	echo "Moved Neovim config to $nvim_dir"
 }
 
 if [ -d "$nvim_dir" ]; then
 	if backup && cleanup; then
-		clone
+		setup
 	else
 		echo "Error: Backup or cleanup failed. Aborting."
 		exit 1
 	fi
 else
-	clone
+	setup
 fi
