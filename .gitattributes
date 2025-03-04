@@ -1,4 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
-*.sh linguist-vendored # Ignore .sh files for %100 Lua in languages.
+# Ignore .sh files for %100 Lua in languages
+*.sh linguist-vendored
