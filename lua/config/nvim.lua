@@ -1,6 +1,6 @@
--- Set leader key to X
-vim.g.mapleader = "X"  -- Leader key
-vim.g.maplocalleader = "X"  -- Local leader key
+-- Set leader key to ,
+vim.g.mapleader = ","  -- Leader key
+vim.g.maplocalleader = ","  -- Local leader key
 vim.opt.termguicolors = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.wrap = false
