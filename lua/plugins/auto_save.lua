@@ -6,8 +6,9 @@ return {
       trigger_events = {"TextChanged", "TextChangedI", "CursorHoldI"},
       execution_message = {
         message = function()
-          local save_msg = string.format(("💾 %s at %s"):format(vim.fn.expand("%:t"), vim.fn.strftime("%H:%M")))
-          return vim.notify(save_msg)
+          local save_msg = ("💾 %s at %s"):format(vim.fn.expand("%:t"), vim.fn.strftime("%H:%M"))
+          vim.notify(save_msg, "info", { title = "Auto Save" })
+          return "" --return empty string easy fix.
         end,
       },
       condition = function(buf)
@@ -23,3 +24,4 @@ return {
     })
   end
 }
+
