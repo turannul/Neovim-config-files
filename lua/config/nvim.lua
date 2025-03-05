@@ -8,9 +8,11 @@ vim.opt.wrap = false
 -- Enable line numbers
 vim.wo.number = true
 
--- Auto-save on Z key
-vim.api.nvim_set_keymap('n', 'Z', ':w<CR>', { noremap = true, silent = true })
+-- Select all text on Leader (,) A key
+vim.keymap.set("n", "<Leader>a", "ggVG", { desc = "Select all" })
 
+-- Save on Leader (,) S key
+vim.keymap.set("n", "<Leader>s", ":w<CR>", { desc = "Save" })
 -- Set the number width for consistency
 vim.opt.numberwidth = 4
 
