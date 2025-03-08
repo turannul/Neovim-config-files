@@ -1,27 +1,30 @@
 return {
-  "Pocco81/auto-save.nvim",
+  "okuuva/auto-save.nvim",
   config = function()
     require("auto-save").setup({
       enabled = true,
-      trigger_events = {"TextChanged", "TextChangedI", "CursorHoldI"},
-      execution_message = {
-        message = function()
-          local save_msg = ("💾 %s at %s"):format(vim.fn.expand("%:t"), vim.fn.strftime("%H:%M"))
-          vim.notify(save_msg, "info", { title = "Auto Save" })
-          return "" --return empty string easy fix.
-        end,
+      -- Auto-Save rules.
+      trigger_events = {
+        immediate_save = {"BufLeave", "FocusLost"},  -- events that trigger an immediate save (Immediate save)
+        defer_save = {"TextChangedI"},               -- events that trigger a deferred save (Saves after debounce_delay)
+        cancel_deferred_save = {"InsertEnter"},      -- events that cancel a pending deferred save (Cancels deferred save debounce_delay)
       },
       condition = function(buf)
-        local fn = vim.fn
-        local utils = require("auto-save.utils.data")
-        if fn.getbufvar(buf, "&modifiable") == 1 and utils.not_in(fn.getbufvar(buf, "&filetype"), {}) then
-          return true -- Save (If file is modifiable and not blacklisted.)
-        end
-        return false  -- Default to not save
+        return vim.fn.getbufvar(buf, "&modifiable") == 1
       end,
-      write_all_buffers = false, -- write all buffers when the current one meets `condition`
-      debounce_delay = 5000, -- saves the file at most every `debounce_delay` milliseconds
+      write_all_buffers = false,  -- only write the current buffer when its condition is met
+      debounce_delay = 1000,      -- save at most every 1000 milliseconds
+    })
+    -- Notification on save
+    local group = vim.api.nvim_create_augroup("autosave", {})
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "AutoSaveWritePost",
+      group = group,
+      callback = function(opts)
+        if opts.data.saved_buffer then
+          vim.notify(string.format("💾 %s at %s", vim.fn.expand("%:t"), vim.fn.strftime("%H:%M")), vim.log.levels.INFO, { title = "AutoSave" })
+        end
+      end,
     })
   end
 }
-
