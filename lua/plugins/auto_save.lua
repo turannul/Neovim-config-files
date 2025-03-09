@@ -22,7 +22,7 @@ return {
       group = group,
       callback = function(opts)
         if opts.data.saved_buffer then
-          vim.notify(string.format("💾 %s at %s", vim.fn.expand("%:t"), vim.fn.strftime("%H:%M")), vim.log.levels.INFO, { title = "AutoSave" })
+          vim.notify(string.format("💾 %s", vim.fn.expand("%:t")), vim.log.levels.INFO, { title = "AutoSave" })
         end
       end,
     })
