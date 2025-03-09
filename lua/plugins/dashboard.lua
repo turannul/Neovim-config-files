@@ -39,6 +39,14 @@ local fixLines = {
     [[                              - Steve Maguire ]],
 }
 
+local neovim = {
+    [[███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗]],
+    [[████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║]],
+    [[██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║]],
+    [[██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║]],
+    [[██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║]],
+    [[╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
+}
 -- todo: add more headers
 local function lineColor(lines, popStart, popEnd)
     local out = {}
@@ -60,6 +68,7 @@ local headers = {
     lineColor(humourLines, 6, 9),
     lineColor(bugLines, 5, 10),
     lineColor(fixLines, 0, 0),
+    lineColor(neovim, 0, 0),
 }
 
 local function header_chars()
@@ -105,12 +114,21 @@ local function configure()
             { type = "text", val = "Quick links", opts = { hl = "SpecialComment", position = "center" } },
             { type = "padding", val = 1 },
             -- Todo more here...
+            -- find file with f bring explorer with search?
+            -- find text with g (grep) live_grep
+            -- create new with n -- :ene | startinsert
+            -- list recents with r -- TODO: Write Recents function
+            -- opeen Lazy with l --Lazy
+            -- open Mason with m --Mason
+            -- quit with q --qa
+            --[[             
             dashboard.button("e", "  New file", "<cmd>ene<CR>"),
             dashboard.button("SPC f", "  Find file"),
             dashboard.button("SPC F", "  Find text"),
             dashboard.button("u", "󱐥  Update plugins", "<cmd>Lazy sync<CR>"),
             dashboard.button("t", "  Install language tools", "<cmd>Mason<CR>"),
-            dashboard.button("q", "󰩈  Quit", "<cmd>qa<CR>"),
+            dashboard.button("q", "󰩈  Quit", "<cmd>qa<CR>"), 
+            ]]
             -- todo like recents?
         },
         position = "center",
