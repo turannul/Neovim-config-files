@@ -19,7 +19,6 @@ return {
             "phpactor",
             "pyright",
             "rust_analyzer",
-            "sqlls",
             "tailwindcss",
             "vimls",
             "yamlls"

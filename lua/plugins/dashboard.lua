@@ -9,7 +9,7 @@ local humourLines = {
     [[                                                        ┬┌┬┐┌─┐  ┌┐ ┌─┐┌┬┐]],
     [[                                                        │ │ └─┐  ├┴┐├─┤ ││]],
     [[                                                        ┴ ┴ └─┘  └─┘┴ ┴─┴┘]],
-    [[                                                              - Cory House]],
+    [[                                                                          ]],
 }
 
 local bugLines = {
@@ -26,7 +26,7 @@ local bugLines = {
     [[  _              __   _                                                              ]],
     [[ | |_   ___     / _| (_) __ __                                                       ]],
     [[ |  _| / _ \   |  _| | | \ \ /  _                                                    ]],
-    [[  \__| \___/   |_|   |_| /_\_\ (_)                                     - Ellen Ullman]],
+    [[  \__| \___/   |_|   |_| /_\_\ (_)                                                   ]],
 }
 
 local fixLines = {
@@ -36,7 +36,7 @@ local fixLines = {
     [[╔╗╔╔═╗╔╦╗  ╔╦╗╦ ╦╔═╗  ╔═╗╦ ╦╔╦╗╔═╗╔╦╗╔═╗╔╦╗╔═╗]],
     [[║║║║ ║ ║    ║ ╠═╣║╣   ╚═╗╚╦╝║║║╠═╝ ║ ║ ║║║║╚═╗]],
     [[╝╚╝╚═╝ ╩    ╩ ╩ ╩╚═╝  ╚═╝ ╩ ╩ ╩╩   ╩ ╚═╝╩ ╩╚═╝]],
-    [[                              - Steve Maguire ]],
+    [[                                              ]],
 }
 
 local neovim = {
@@ -113,22 +113,13 @@ local function configure()
         val = {
             { type = "text", val = "Quick links", opts = { hl = "SpecialComment", position = "center" } },
             { type = "padding", val = 1 },
+            dashboard.button("n", "  New file", "<cmd>ene <BAR> startinsert <CR>"),
+            dashboard.button("e", "  Explorer", "<cmd>NvimTreeToggle<CR>"),
+            dashboard.button("l", "󰒲  Lazy", "<cmd>Lazy<CR>"),
+            dashboard.button("m", "  Mason", "<cmd>Mason<CR>"),
+            dashboard.button("q", "󰩈  Quit", "<cmd>qa!<CR>"),
             -- Todo more here...
-            -- find file with f bring explorer with search?
-            -- find text with g (grep) live_grep
-            -- create new with n -- :ene | startinsert
-            -- list recents with r -- TODO: Write Recents function
-            -- opeen Lazy with l --Lazy
-            -- open Mason with m --Mason
-            -- quit with q --qa
-            --[[             
-            dashboard.button("e", "  New file", "<cmd>ene<CR>"),
-            dashboard.button("SPC f", "  Find file"),
-            dashboard.button("SPC F", "  Find text"),
-            dashboard.button("u", "󱐥  Update plugins", "<cmd>Lazy sync<CR>"),
-            dashboard.button("t", "  Install language tools", "<cmd>Mason<CR>"),
-            dashboard.button("q", "󰩈  Quit", "<cmd>qa<CR>"), 
-            ]]
+            -- fix: show recently opened files?
             -- todo like recents?
         },
         position = "center",
@@ -146,15 +137,7 @@ local function configure()
     return themeconfig
 end
 
---[[ This one is whose hates colors.
 return {
-    'goolord/alpha-nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function ()
-        require'alpha'.setup(configure())
-    end
-}]]
-return { -- I'll use this one
     'goolord/alpha-nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
