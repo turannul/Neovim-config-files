@@ -111,16 +111,19 @@ local function configure()
     local buttons = {
         type = "group",
         val = {
-            { type = "text", val = "Quick links", opts = { hl = "SpecialComment", position = "center" } },
+            { type = "text", val = "Shortcuts", opts = { hl = "SpecialComment", position = "center" } },
             { type = "padding", val = 1 },
             dashboard.button("n", "  New file", "<cmd>ene <BAR> startinsert <CR>"),
-            dashboard.button("e", "  Explorer", "<cmd>NvimTreeToggle<CR>"),
+            dashboard.button("e", "  Explorer", "<cmd>Neotree toggle<CR>"),
             dashboard.button("l", "󰒲  Lazy", "<cmd>Lazy<CR>"),
             dashboard.button("m", "  Mason", "<cmd>Mason<CR>"),
             dashboard.button("q", "󰩈  Quit", "<cmd>qa!<CR>"),
+            { type = "text", val = "Recents", opts = { hl = "SpecialComment", position = "center" } },
+            { type = "padding", val = 1 },
             -- Todo more here...
             -- fix: show recently opened files?
             -- todo like recents?
+
         },
         position = "center",
     }
