@@ -29,16 +29,6 @@ local bugLines = {
     [[  \__| \___/   |_|   |_| /_\_\ (_)                                                   ]],
 }
 
-local fixLines = {
-    [[    ┌─┐┬─┐ ┬  ┌┬┐┬ ┬┌─┐  ┌─┐┌─┐┬ ┬┌─┐┌─┐      ]],
-    [[    ├┤ │┌┴┬┘   │ ├─┤├┤   │  ├─┤│ │└─┐├┤       ]],
-    [[    └  ┴┴ └─   ┴ ┴ ┴└─┘  └─┘┴ ┴└─┘└─┘└─┘┘     ]],
-    [[╔╗╔╔═╗╔╦╗  ╔╦╗╦ ╦╔═╗  ╔═╗╦ ╦╔╦╗╔═╗╔╦╗╔═╗╔╦╗╔═╗]],
-    [[║║║║ ║ ║    ║ ╠═╣║╣   ╚═╗╚╦╝║║║╠═╝ ║ ║ ║║║║╚═╗]],
-    [[╝╚╝╚═╝ ╩    ╩ ╩ ╩╚═╝  ╚═╝ ╩ ╩ ╩╩   ╩ ╚═╝╩ ╩╚═╝]],
-    [[                                              ]],
-}
-
 local neovim = {
     [[███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗]],
     [[████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║]],
@@ -67,7 +57,6 @@ end
 local headers = {
     lineColor(humourLines, 6, 9),
     lineColor(bugLines, 5, 10),
-    lineColor(fixLines, 0, 0),
     lineColor(neovim, 0, 0),
 }
 
@@ -75,10 +64,6 @@ local function header_chars()
     math.randomseed(os.time())
     return headers[math.random(#headers)]
 end
-
--- Map over the headers, setting a different color for each line.
--- This is done by setting the Highligh to StartLogoN, where N is the row index.
--- Define StartLogo1..StartLogoN to get a nice gradient.
 
 local function header_color()
     local lines = {}

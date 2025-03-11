@@ -8,15 +8,14 @@ return {
   dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
   config = function()
     require("neo-tree").setup({
-      position = "right",  -- Ensure this is at root level
       filesystem = {
         filtered_items = { hide_dotfiles = false, hide_gitignored = false },
         bind_to_cwd = true,
         follow_current_file = true,
       },
       window = {
-        position = "right",  -- Explicit window position
-        width = 35,
+        position = "right",
+        width = 45,
         mappings = { ["<C-e>"] = "close_window" }
       },
       source_selector = { winbar = true, content_layout = "center" }

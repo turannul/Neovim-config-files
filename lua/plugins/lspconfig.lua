@@ -27,7 +27,6 @@ return {
     
         local lspconfig = require("lspconfig")
     
-        -- Setup each language server
         for _, server in ipairs(require("mason-lspconfig").get_installed_servers()) do
             lspconfig[server].setup({})
         end

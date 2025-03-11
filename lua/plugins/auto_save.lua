@@ -3,19 +3,17 @@ return {
   config = function()
     require("auto-save").setup({
       enabled = true,
-      -- Auto-Save rules.
       trigger_events = {
-        immediate_save = {"BufLeave", "FocusLost"},  -- events that trigger an immediate save (Immediate save)
-        defer_save = {"TextChangedI"},               -- events that trigger a deferred save (Saves after debounce_delay)
-        cancel_deferred_save = {"InsertEnter"},      -- events that cancel a pending deferred save (Cancels deferred save debounce_delay)
+        immediate_save = {"BufLeave", "FocusLost"},
+        defer_save = {"TextChangedI"},
+        cancel_deferred_save = {"InsertEnter"},
       },
       condition = function(buf)
         return vim.fn.getbufvar(buf, "&modifiable") == 1
       end,
-      write_all_buffers = false,  -- only write the current buffer when its condition is met
-      debounce_delay = 1000,      -- save at most every 1000 milliseconds
+      write_all_buffers = false,
+      debounce_delay = 1000,
     })
-    -- Notification on save
     local group = vim.api.nvim_create_augroup("autosave", {})
     vim.api.nvim_create_autocmd("User", {
       pattern = "AutoSaveWritePost",
