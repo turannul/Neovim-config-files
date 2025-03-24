@@ -12,25 +12,15 @@ return {
         filtered_items = { hide_dotfiles = false, hide_gitignored = false },
         bind_to_cwd = true,
         follow_current_file = true,
+        use_libuv_file_watcher = true,
+        leave_dirs_open = true
       },
       window = {
         position = "right",
         width = 45,
         mappings = { ["<C-e>"] = "close_window" }
       },
-      source_selector = { winbar = true, content_layout = "center" }
+      --source_selector = { winbar = true, content_layout = "center" }
     })
-  end,
-  init = function()
-    vim.api.nvim_create_autocmd("BufEnter", {
-      group = vim.api.nvim_create_augroup("NeoTreeInit", { clear = true }),
-      callback = function()
-        local stats = vim.loop.fs_stat(vim.fn.argv(0))
-        if stats and stats.type == "directory" then
-          require("neo-tree").close_all()
-          require("neo-tree").show({ position = "right", reveal_force_cwd = true })
-        end
-      end
-    })
-  end,
+  end
 }
