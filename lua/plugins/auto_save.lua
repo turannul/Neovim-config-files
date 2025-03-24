@@ -12,7 +12,7 @@ return {
         return vim.fn.getbufvar(buf, "&modifiable") == 1
       end,
       write_all_buffers = false,
-      debounce_delay = 1000,
+      debounce_delay = 5000,
     })
     local group = vim.api.nvim_create_augroup("autosave", {})
     vim.api.nvim_create_autocmd("User", {
