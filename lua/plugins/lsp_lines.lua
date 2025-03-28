@@ -5,9 +5,9 @@ return {
     vim.diagnostic.config({
         virtual_text = false,
         update_in_insert = true,
-        severity_sort = true,
+        severity_sort = false,
         float = { border = "rounded" },
-        underline = true,
+        underline = false,
     })
     end
 }
