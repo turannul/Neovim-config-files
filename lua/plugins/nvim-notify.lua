@@ -4,7 +4,7 @@ return {
         require("notify").setup({
             -- background_colour = "#000000",
             timeout = 3000,
-            fps = 120,  -- because, why not?
+            fps = 60,
             icons = {
             ERROR = "",
             WARN  = "",
